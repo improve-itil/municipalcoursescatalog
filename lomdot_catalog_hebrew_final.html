@@ -116,8 +116,10 @@
     <a href="https://www.improve-it.co.il" target="_blank">
       <img src="images/logo-improve-it.png" alt="Improve-IT Logo">
     </a>
-    <h2>הדרך היעילה, המדויקת והחסכונית להכשיר עובדים – עם לומדות דיגיטליות מותאמות לרשויות מקומיות</h2>
+      <h2>הדרך היעילה, המדויקת והחסכונית להכשיר עובדים – עם לומדות דיגיטליות מותאמות לרשויות מקומיות</h2>
+      <div class="toggle-all-icon" onclick="toggleAllCards()">🔄</div>
   </div>
+  
   <div class="catalog-container">
 
     <div class="card">
@@ -247,6 +249,18 @@
         card.classList.toggle('flip');
       });
     });
+
+      document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flip');
+      });
+    });
+  
+    function toggleAllCards() {
+      document.querySelectorAll('.card').forEach(card => {
+        card.classList.toggle('flip');
+      });
+    }
   </script>
 </body>
 </html>
