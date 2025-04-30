@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>קטלוג לומדות</title>
+  <title>קטלוג לומדות לרשויות מוניציפליות</title>
   <link rel="icon" href="logo-improve-it-32.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
@@ -28,6 +27,13 @@
       font-size: 20px;
       margin-top: 15px;
     }
+    .toggle-all-icon {
+      font-size: 30px;
+      cursor: pointer;
+      margin-top: 10px;
+      user-select: none;
+      display: inline-block;
+    }
     .catalog-container {
       display: flex;
       flex-wrap: wrap;
@@ -48,7 +54,7 @@
       transition: transform 0.8s ease-in-out;
     }
     .card.flip .inner {
-    transform: rotateY(180deg);
+      transform: rotateY(180deg);
     }
     .front, .back {
       position: absolute;
@@ -66,7 +72,6 @@
       object-fit: contain;
       background-color: white;
     }
-
     .back {
       background: #1a237e;
       color: white;
@@ -78,6 +83,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      cursor: pointer;
     }
     .back h3 {
       margin: 0;
@@ -87,6 +93,23 @@
       font-size: 14px;
       margin-top: 10px;
     }
+    .info-icon {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 20px;
+      color: #ffffffcc;
+      background: #1a237ecc;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      z-index: 2;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -95,141 +118,147 @@
       <img src="images/logo-improve-it.png" alt="Improve-IT Logo">
     </a>
     <h2>הדרך היעילה, המדויקת והחסכונית להכשיר עובדים – עם לומדות דיגיטליות מותאמות לרשויות מקומיות</h2>
+    <div class="toggle-all-icon" onclick="toggleAll()">🔄</div>
   </div>
-
   <div class="catalog-container">
-    
+
     <div class="card">
       <div class="inner">
         <div class="front">
+          <div class="info-icon" onclick="flipCard(this)">i</div>
           <img src="images/officesafetyholon.jpg" alt="לומדת בטיחות במשרד">
         </div>
-        <div class="back">
+        <div class="back" onclick="unflipCard(this)">
           <h3>לומדת בטיחות במשרד</h3>
           <p>הסבר על כללי בטיחות לעובדי משרד ומניעת תאונות</p>
         </div>
       </div>
     </div>
-    
     <div class="card">
       <div class="inner">
         <div class="front">
-          <img src="images/lifeguardsafetytelaviv.jpg" alt="לומדת בטיחות מצילים">
+          <div class="info-icon" onclick="flipCard(this)">i</div>
+          <img src="images/lifeguardsafetytelaviv.jpg" alt="לומדת בטיחות למצילים">
         </div>
-        <div class="back">
+        <div class="back" onclick="unflipCard(this)">
           <h3>לומדת בטיחות למצילים</h3>
           <p>לומדה לנוהלי עבודה ובטיחות במתחמי חוף</p>
         </div>
       </div>
     </div>
-    
     <div class="card">
       <div class="inner">
         <div class="front">
+          <div class="info-icon" onclick="flipCard(this)">i</div>
           <img src="images/informationsecurityherzliya.jpg" alt="לומדת אבטחת מידע">
         </div>
-        <div class="back">
+        <div class="back" onclick="unflipCard(this)">
           <h3>לומדת אבטחת מידע</h3>
-          <p>הדרכה על סיכונים דיגיטליים ושמירה על מידע בארגון.<br>כולל פרק בנושא סיכונים בשימוש בכלי בינה מלאכותית.</p>
+          <p>הדרכה על סיכונים דיגיטליים ושמירה על מידע בארגון. כולל פרק בנושא סיכונים בשימוש בכלי בינה מלאכותית.</p>
         </div>
       </div>
     </div>
-    
     <div class="card">
       <div class="inner">
         <div class="front">
+          <div class="info-icon" onclick="flipCard(this)">i</div>
           <img src="images/fieldworkersafety.jpg" alt="בטיחות לעובדי שטח">
         </div>
-        <div class="back">
-          <h3>בטיחות לעובדי שטח ואבות בית</h3>
+        <div class="back" onclick="unflipCard(this)">
+          <h3>בטיחות לעובדי שטח</h3>
           <p>הדרכה לשמירה על בטיחות בעבודת שטח</p>
         </div>
       </div>
     </div>
-    
     <div class="card">
       <div class="inner">
         <div class="front">
+          <div class="info-icon" onclick="flipCard(this)">i</div>
           <img src="images/emergencykfarsaba.jpg" alt="לומדת מצבי חירום">
         </div>
-        <div class="back">
+        <div class="back" onclick="unflipCard(this)">
           <h3>לומדת מצבי חירום</h3>
           <p>נהלים לפעולה נכונה בעת חירום במרחב הציבורי</p>
         </div>
       </div>
     </div>
-    
     <div class="card">
       <div class="inner">
         <div class="front">
+          <div class="info-icon" onclick="flipCard(this)">i</div>
           <img src="images/businesslicensing.jpg" alt="לומדת רישוי עסקים">
         </div>
-        <div class="back">
+        <div class="back" onclick="unflipCard(this)">
           <h3>לומדת רישוי עסקים</h3>
           <p>הסבר על תהליך הרישוי, חובות וזכויות בעלי העסקים</p>
         </div>
       </div>
     </div>
-    
     <div class="card">
       <div class="inner">
         <div class="front">
+          <div class="info-icon" onclick="flipCard(this)">i</div>
           <img src="images/accessibilitymodiinlit.png" alt="לומדת נגישות">
         </div>
-        <div class="back">
+        <div class="back" onclick="unflipCard(this)">
           <h3>לומדת נגישות</h3>
           <p>היכרות עם עקרונות הנגישות במרחב העירוני</p>
         </div>
       </div>
     </div>
-
     <div class="card">
       <div class="inner">
         <div class="front">
+          <div class="info-icon" onclick="flipCard(this)">i</div>
           <img src="images/newemployeeitraanana.jpg" alt="לומדה לקליטת עובד חדש">
         </div>
-        <div class="back">
+        <div class="back" onclick="unflipCard(this)">
           <h3>לומדה לקליטת עובד חדש</h3>
-          <p>לומדה אינטראקטיבית להיכרות עם מערכות המחשוב, נוהלי בטיחות ונהלים כלליים לעובדים חדשים בארגון.
-          </p>
+          <p>לומדה אינטראקטיבית להיכרות עם מערכות המחשוב, נוהלי בטיחות ונהלים כלליים לעובדים חדשים בארגון.</p>
         </div>
       </div>
     </div>
-
     <div class="card">
       <div class="inner">
         <div class="front">
+          <div class="info-icon" onclick="flipCard(this)">i</div>
           <img src="images/harassmentpreventionroshhahayin.png" alt="לומדה למניעת הטרדה מינית">
         </div>
-        <div class="back">
+        <div class="back" onclick="unflipCard(this)">
           <h3>לומדה למניעת הטרדה מינית</h3>
-          <p>לומדה חווייתית לשיפור ההבנה של גבולות, אחריות אישית וזיהוי סיטואציות רגישות.          </p>
+          <p>לומדה חווייתית לשיפור ההבנה של גבולות, אחריות אישית וזיהוי סיטואציות רגישות.</p>
         </div>
       </div>
     </div>
-    
-
     <div class="card">
       <div class="inner">
         <div class="front">
+          <div class="info-icon" onclick="flipCard(this)">i</div>
           <img src="images/sanitationsafetytelaviv.jpg" alt="לומדת בטיחות לעובדי תברואה">
         </div>
-        <div class="back">
+        <div class="back" onclick="unflipCard(this)">
           <h3>לומדת בטיחות לעובדי תברואה</h3>
           <p>הדרכה מקיפה על עבודה בטוחה עם ציוד ניקיון, תנועה בסביבה עירונית והיגיינה תעסוקתית.</p>
         </div>
       </div>
     </div>
-    
   </div>
-
-  
   <script>
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => {
-      card.classList.toggle('flip');
-    });
-  });
-</script>
+    function flipCard(el) {
+      const card = el.closest(".card");
+      card.classList.add("flip");
+    }
+
+    function unflipCard(el) {
+      const card = el.closest(".card");
+      card.classList.remove("flip");
+    }
+
+    function toggleAll() {
+      document.querySelectorAll(".card").forEach(card => {
+        card.classList.toggle("flip");
+      });
+    }
+  </script>
 </body>
 </html>
