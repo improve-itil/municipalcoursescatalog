@@ -49,7 +49,7 @@
     .toggle-all-icon {
       cursor: pointer;
     }
-    .card.flip .inner {
+    .card.force-flip .inner {
       transform: rotateY(180deg);
     }
     .front, .back {
@@ -114,7 +114,8 @@
     }
     @media (hover: hover) and (pointer: fine) {
       .card:hover .inner {
-      transform: rotateY(180deg);
+      transform: none !important;
+    }
     }
   }
   </style>
