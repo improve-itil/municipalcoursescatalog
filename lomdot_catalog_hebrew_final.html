@@ -27,14 +27,6 @@
       font-size: 20px;
       margin-top: 15px;
     }
-    .toggle-all-icon {
-      font-size: 30px;
-      cursor: pointer;
-      margin-top: 10px;
-      animation: blink 1.5s ease-in-out 2;
-      user-select: none;
-      display: inline-block;
-    }
     .catalog-container {
       display: flex;
       flex-wrap: wrap;
@@ -54,14 +46,8 @@
       transform-style: preserve-3d;
       transition: transform 0.8s ease-in-out;
     }
-    .card.flip .inner,
-    .card.force-flip .inner {
+    .card.flip .inner {
       transform: rotateY(180deg);
-    }
-    @media (hover: hover) and (pointer: fine) {
-      .card:hover .inner {
-        transform: none !important;
-      }
     }
     .front, .back {
       position: absolute;
@@ -114,12 +100,7 @@
       justify-content: center;
       font-weight: bold;
       z-index: 2;
-      animation: blink 1.5s ease-in-out 2;
       cursor: pointer;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.2); }
     }
   </style>
 </head>
@@ -129,14 +110,13 @@
       <img src="images/logo-improve-it.png" alt="Improve-IT Logo">
     </a>
     <h2>הדרך היעילה, המדויקת והחסכונית להכשיר עובדים – עם לומדות דיגיטליות מותאמות לרשויות מקומיות</h2>
-    <div class="toggle-all-icon" onclick="toggleAllCards()">🔄</div>
   </div>
   <div class="catalog-container">
 
     <div class="card">
       <div class="inner">
         <div class="front">
-          <div class="info-icon">i</div>
+          <div class="info-icon" onclick="this.closest('.card').classList.toggle('flip')">i</div>
           <img src="images/officesafetyholon.jpg" alt="לומדת בטיחות במשרד">
         </div>
         <div class="back">
@@ -148,7 +128,7 @@
     <div class="card">
       <div class="inner">
         <div class="front">
-          <div class="info-icon">i</div>
+          <div class="info-icon" onclick="this.closest('.card').classList.toggle('flip')">i</div>
           <img src="images/lifeguardsafetytelaviv.jpg" alt="לומדת בטיחות למצילים">
         </div>
         <div class="back">
@@ -160,7 +140,7 @@
     <div class="card">
       <div class="inner">
         <div class="front">
-          <div class="info-icon">i</div>
+          <div class="info-icon" onclick="this.closest('.card').classList.toggle('flip')">i</div>
           <img src="images/informationsecurityherzliya.jpg" alt="לומדת אבטחת מידע">
         </div>
         <div class="back">
@@ -172,7 +152,7 @@
     <div class="card">
       <div class="inner">
         <div class="front">
-          <div class="info-icon">i</div>
+          <div class="info-icon" onclick="this.closest('.card').classList.toggle('flip')">i</div>
           <img src="images/fieldworkersafety.jpg" alt="בטיחות לעובדי שטח">
         </div>
         <div class="back">
@@ -184,7 +164,7 @@
     <div class="card">
       <div class="inner">
         <div class="front">
-          <div class="info-icon">i</div>
+          <div class="info-icon" onclick="this.closest('.card').classList.toggle('flip')">i</div>
           <img src="images/emergencykfarsaba.jpg" alt="לומדת מצבי חירום">
         </div>
         <div class="back">
@@ -196,7 +176,7 @@
     <div class="card">
       <div class="inner">
         <div class="front">
-          <div class="info-icon">i</div>
+          <div class="info-icon" onclick="this.closest('.card').classList.toggle('flip')">i</div>
           <img src="images/businesslicensing.jpg" alt="לומדת רישוי עסקים">
         </div>
         <div class="back">
@@ -208,7 +188,7 @@
     <div class="card">
       <div class="inner">
         <div class="front">
-          <div class="info-icon">i</div>
+          <div class="info-icon" onclick="this.closest('.card').classList.toggle('flip')">i</div>
           <img src="images/accessibilitymodiinlit.png" alt="לומדת נגישות">
         </div>
         <div class="back">
@@ -220,7 +200,7 @@
     <div class="card">
       <div class="inner">
         <div class="front">
-          <div class="info-icon">i</div>
+          <div class="info-icon" onclick="this.closest('.card').classList.toggle('flip')">i</div>
           <img src="images/newemployeeitraanana.jpg" alt="לומדה לקליטת עובד חדש">
         </div>
         <div class="back">
@@ -232,7 +212,7 @@
     <div class="card">
       <div class="inner">
         <div class="front">
-          <div class="info-icon">i</div>
+          <div class="info-icon" onclick="this.closest('.card').classList.toggle('flip')">i</div>
           <img src="images/harassmentpreventionroshhahayin.png" alt="לומדה למניעת הטרדה מינית">
         </div>
         <div class="back">
@@ -244,7 +224,7 @@
     <div class="card">
       <div class="inner">
         <div class="front">
-          <div class="info-icon">i</div>
+          <div class="info-icon" onclick="this.closest('.card').classList.toggle('flip')">i</div>
           <img src="images/sanitationsafetytelaviv.jpg" alt="לומדת בטיחות לעובדי תברואה">
         </div>
         <div class="back">
@@ -254,24 +234,5 @@
       </div>
     </div>
   </div>
-  <script>
-    // הופך את כל הקלפים
-    function toggleAllCards() {
-      document.querySelectorAll('.card').forEach(card => {
-        card.classList.toggle('force-flip');
-      });
-    }
-
-    // לחיצה על אייקון i תסובב כרטיס בודד
-    document.addEventListener("DOMContentLoaded", function () {
-      document.querySelectorAll(".info-icon").forEach(icon => {
-        icon.addEventListener("click", function (e) {
-          e.stopPropagation();
-          const card = icon.closest(".card");
-          card.classList.toggle("flip");
-        });
-      });
-    });
-  </script>
 </body>
 </html>
