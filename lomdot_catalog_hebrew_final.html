@@ -46,8 +46,8 @@
       transform-style: preserve-3d;
       transition: transform 0.8s ease-in-out;
     }
-    .card:hover .inner {
-      transform: rotateY(180deg);
+    .card.flip .inner {
+    transform: rotateY(180deg);
     }
     .front, .back {
       position: absolute;
@@ -206,6 +206,7 @@
         </div>
       </div>
     </div>
+    
 
     <div class="card">
       <div class="inner">
@@ -220,5 +221,14 @@
     </div>
     
   </div>
+
+  
+  <script>
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flip');
+    });
+  });
+</script>
 </body>
 </html>
