@@ -112,6 +112,11 @@
       0%, 100% { opacity: 0.3; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.2); }
     }
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover .inner {
+      transform: rotateY(180deg);
+    }
+  }
   </style>
 </head>
 <body>
