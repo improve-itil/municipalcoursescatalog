@@ -5,15 +5,33 @@
   <meta charset="UTF-8">
   <title>קטלוג לומדות</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f9f9f9;
+      padding: 20px;
+      margin: 0;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header img {
+      max-width: 180px;
+      height: auto;
+    }
+    .header h2 {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      margin-top: 15px;
+    }
+    .catalog-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      padding: 20px;
     }
     .card {
       width: 90vw;
@@ -26,7 +44,7 @@
       height: 100%;
       position: relative;
       transform-style: preserve-3d;
-      transition: transform 0.6s;
+      transition: transform 0.8s ease-in-out;
     }
     .card:hover .inner {
       transform: rotateY(180deg);
@@ -38,6 +56,8 @@
       backface-visibility: hidden;
       border-radius: 12px;
       overflow: hidden;
+      top: 0;
+      left: 0;
     }
     .front img {
       width: 100%;
@@ -67,7 +87,15 @@
   </style>
 </head>
 <body>
+  <div class="header">
+    <a href="https://www.improve-it.co.il" target="_blank">
+      <img src="images/logo-improve-it.png" alt="Improve-IT Logo">
+    </a>
+    <h2>קטלוג פתרונות ההדרכה של Improve-IT לשיפור הידע והבטיחות בקרב עובדי הרשות</h2>
+  </div>
 
+  <div class="catalog-container">
+    
     <div class="card">
       <div class="inner">
         <div class="front">
@@ -76,18 +104,6 @@
         <div class="back">
           <h3>בטיחות במשרד - עיריית חולון</h3>
           <p>הסבר על כללי בטיחות לעובדי משרד ומניעת תאונות</p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="inner">
-        <div class="front">
-          <img src="images/newemployeeitraanana.jpg" alt="קליטת עובד חדש במערכות מחשוב - עיריית רעננה">
-        </div>
-        <div class="back">
-          <h3>קליטת עובד חדש - עיריית רעננה</h3>
-          <p>לומדה אינטראקטיבית בנושא בטיחות ונוהלים לעובד חדש במערכות מחשוב</p>
         </div>
       </div>
     </div>
@@ -122,8 +138,8 @@
           <img src="images/fieldworkersafety.jpg" alt="בטיחות לעובדי שטח">
         </div>
         <div class="back">
-          <h3>לומדת בטיחות לעובדי שטח</h3>
-          <p>הדרכה לשמירה על בטיחות לאבות בית ובעבודת שטח</p>
+          <h3>בטיחות לעובדי שטח</h3>
+          <p>הדרכה לשמירה על בטיחות בעבודת שטח</p>
         </div>
       </div>
     </div>
@@ -163,15 +179,17 @@
         </div>
       </div>
     </div>
-    
+
     <div class="card">
       <div class="inner">
         <div class="front">
-          <img src="images/sanitationsafetytelaviv.jpg" alt="בטיחות לעובדי תברואה - עיריית תל אביב">
+          <img src="images/newemployeeitraanana.jpg" alt="קליטת עובד חדש - עיריית רעננה">
         </div>
         <div class="back">
-          <h3>בטיחות לעובדי תברואה - עיריית תל אביב</h3>
-          <p>הדרכה על נהלי בטיחות בעבודות ניקיון ואיסוף אשפה</p>
+          <h3>קליטת עובד חדש - עיריית רעננה</h3>
+          <p>אינטראקטיבית להיכרות עם מערכות המחשוב, נוהלי בטיחות ונהלים כלליים לעובדים חדשים בארגון.
+
+          </p>
         </div>
       </div>
     </div>
@@ -183,10 +201,23 @@
         </div>
         <div class="back">
           <h3>מניעת הטרדה מינית - עיריית ראש העין</h3>
-          <p>לומדה להעלאת מודעות וזיהוי מצבים רגישים בעבודה</p>
+          <p>לומדה חווייתית לשיפור ההבנה של גבולות, אחריות אישית וזיהוי סיטואציות רגישות.          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <img src="images/sanitationsafetytelaviv.jpg" alt="בטיחות לעובדי תברואה - עיריית תל אביב">
+        </div>
+        <div class="back">
+          <h3>בטיחות לעובדי תברואה - עיריית תל אביב</h3>
+          <p>הדרכה מקיפה על עבודה בטוחה עם ציוד ניקיון, תנועה בסביבה עירונית והיגיינה תעסוקתית.</p>
         </div>
       </div>
     </div>
     
+  </div>
 </body>
 </html>
