@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>קטלוג לומדות</title>
+  <link rel="icon" href="logo-improve-it-32.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+      margin: 0;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header img {
+      max-width: 180px;
+      height: auto;
+    }
+    .header h2 {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      margin-top: 15px;
+    }
+    .catalog-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      width: 90vw;
+      max-width: 300px;
+      height: 200px;
+      perspective: 1000px;
+    }
+    .inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease-in-out;
+    }
+    .card:hover .inner {
+      transform: rotateY(180deg);
+    }
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+    }
+    .front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .back {
+      background: #1a237e;
+      color: white;
+      transform: rotateY(180deg);
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .back h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .back p {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="https://www.improve-it.co.il" target="_blank">
+      <img src="images/logo-improve-it.png" alt="Improve-IT Logo">
+    </a>
+    <h2>קטלוג פתרונות ההדרכה של Improve-IT לשיפור הידע והבטיחות בקרב עובדי הרשות</h2>
+  </div>
+
+  <div class="catalog-container">
+    
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <img src="images/officesafetyholon.jpg" alt="בטיחות במשרד - עיריית חולון">
+        </div>
+        <div class="back">
+          <h3>בטיחות במשרד - עיריית חולון</h3>
+          <p>הסבר על כללי בטיחות לעובדי משרד ומניעת תאונות</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <img src="images/lifeguardsafetytelaviv.jpg" alt="בטיחות מצילים - עיריית תל אביב">
+        </div>
+        <div class="back">
+          <h3>בטיחות מצילים - עיריית תל אביב</h3>
+          <p>לומדה לנוהלי עבודה ובטיחות במתחמי חוף</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <img src="images/informationsecurityherzliya.jpg" alt="אבטחת מידע - עיריית הרצליה">
+        </div>
+        <div class="back">
+          <h3>אבטחת מידע - עיריית הרצליה</h3>
+          <p>הדרכה על סיכונים דיגיטליים ושמירה על מידע בארגון</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <img src="images/fieldworkersafety.jpg" alt="בטיחות לעובדי שטח">
+        </div>
+        <div class="back">
+          <h3>בטיחות לעובדי שטח</h3>
+          <p>הדרכה לשמירה על בטיחות בעבודת שטח</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <img src="images/emergencykfarsaba.jpg" alt="מצבי חירום - עיריית כפר סבא">
+        </div>
+        <div class="back">
+          <h3>מצבי חירום - עיריית כפר סבא</h3>
+          <p>נהלים לפעולה נכונה בעת חירום במרחב הציבורי</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <img src="images/businesslicensing.jpg" alt="רישוי עסקים">
+        </div>
+        <div class="back">
+          <h3>רישוי עסקים</h3>
+          <p>הסבר על תהליך הרישוי, חובות וזכויות בעלי העסקים</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <img src="images/accessibilitymodiinlit.png" alt="נגישות - עיריית מודיעין עילית">
+        </div>
+        <div class="back">
+          <h3>נגישות - עיריית מודיעין עילית</h3>
+          <p>היכרות עם עקרונות הנגישות במרחב העירוני</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <img src="images/newemployeeitraanana.jpg" alt="קליטת עובד חדש - עיריית רעננה">
+        </div>
+        <div class="back">
+          <h3>קליטת עובד חדש - עיריית רעננה</h3>
+          <p>אינטראקטיבית להיכרות עם מערכות המחשוב, נוהלי בטיחות ונהלים כלליים לעובדים חדשים בארגון.
+
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <img src="images/harassmentpreventionroshhahayin.png" alt="מניעת הטרדה מינית - עיריית ראש העין">
+        </div>
+        <div class="back">
+          <h3>מניעת הטרדה מינית - עיריית ראש העין</h3>
+          <p>לומדה חווייתית לשיפור ההבנה של גבולות, אחריות אישית וזיהוי סיטואציות רגישות.          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <img src="images/sanitationsafetytelaviv.jpg" alt="בטיחות לעובדי תברואה - עיריית תל אביב">
+        </div>
+        <div class="back">
+          <h3>בטיחות לעובדי תברואה - עיריית תל אביב</h3>
+          <p>הדרכה מקיפה על עבודה בטוחה עם ציוד ניקיון, תנועה בסביבה עירונית והיגיינה תעסוקתית.</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>
