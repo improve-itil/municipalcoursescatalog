@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>קטלוג לומדות</title>
-  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="icon" href="logo-improve-it-32.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -54,6 +54,7 @@
       transform-style: preserve-3d;
       transition: transform 0.8s ease-in-out;
     }
+    .card.flip .inner,
     .card.force-flip .inner {
       transform: rotateY(180deg);
     }
@@ -77,9 +78,6 @@
       height: 100%;
       object-fit: contain;
       background-color: white;
-    }
-    .front .info-icon {
-      transform: rotateY(0deg);
     }
     .back {
       background: #1a237e;
@@ -133,7 +131,6 @@
     <h2>הדרך היעילה, המדויקת והחסכונית להכשיר עובדים – עם לומדות דיגיטליות מותאמות לרשויות מקומיות</h2>
     <div class="toggle-all-icon" onclick="toggleAllCards()">🔄</div>
   </div>
-
   <div class="catalog-container">
 
     <div class="card">
@@ -258,19 +255,23 @@
     </div>
   </div>
   <script>
-    document.querySelectorAll('.info-icon').forEach(icon => {
-      icon.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const card = icon.closest('.card');
-        card.classList.toggle('flip');
-      });
-    });
-
+    // הופך את כל הקלפים
     function toggleAllCards() {
       document.querySelectorAll('.card').forEach(card => {
         card.classList.toggle('force-flip');
       });
     }
+
+    // לחיצה על אייקון i תסובב כרטיס בודד
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".info-icon").forEach(icon => {
+        icon.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const card = icon.closest(".card");
+          card.classList.toggle("flip");
+        });
+      });
+    });
   </script>
 </body>
 </html>
