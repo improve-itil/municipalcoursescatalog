@@ -56,6 +56,10 @@
     .card.flip .inner {
       transform: rotateY(180deg);
     }
+    .front {
+      transform: rotateY(0deg);
+      z-index: 2;
+    }
     .front, .back {
       position: absolute;
       width: 100%;
@@ -77,6 +81,7 @@
       background: #1a237e;
       color: white;
       transform: rotateY(180deg);
+      z-index: 1;
       padding: 20px;
       box-sizing: border-box;
       display: flex;
