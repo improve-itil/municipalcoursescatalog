@@ -84,7 +84,24 @@
       border: none; padding: 10px 20px;
       border-radius: 6px; cursor: pointer;
     }
-  </style>
+  
+    @media (max-width: 480px) {
+      .modal-content {
+        width: 90%;
+        padding: 15px;
+      }
+      .modal-content input, .modal-content textarea {
+        font-size: 16px;
+      }
+      .back p, .back h3 {
+        font-size: 14px;
+      }
+      .contact-btn {
+        padding: 10px;
+        font-size: 16px;
+      }
+    }
+</style>
 </head>
 <body>
   <div class="header">
@@ -139,7 +156,7 @@
       <div class="inner">
         <div class="front">
           <div class="info-icon" onclick="flipCard(this)">i</div>
-          <img src="images/fieldworkersafety.jpg" alt="לומדת בטיחות לעובדי שטח ואבות בית">
+          <img src="images/fieldworkersafety.jpg" alt="בטיחות לעובדי שטח">
         </div>
         <div class="back" onclick="unflipCard(this)">
           <h3>לומדת בטיחות לעובדי שטח ואבות בית</h3>
