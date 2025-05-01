@@ -102,6 +102,25 @@
     }
     .modal-content button:active { transform:scale(.95); }
 
+    /* Footer Contact Section */
+    .footer-contact {
+      margin-top:40px; padding:20px;
+      background:#eceff1; border-radius:8px;
+      text-align:center; font-size:14px; color:#333;
+    }
+    .footer-contact h3 {
+      margin:0 0 10px; font-size:18px; color:#1a237e;
+    }
+    .footer-contact p {
+      margin:5px 0;
+    }
+    .footer-contact a {
+      color:#1a237e; text-decoration:none;
+    }
+    .footer-contact a:hover {
+      text-decoration:underline;
+    }
+
     @keyframes fadeInUp {
       to {opacity:1; transform:translateY(0);}
     }
@@ -132,13 +151,10 @@
         <div class="back">
           <h3>לומדת בטיחות במשרד</h3>
           <p>הסבר על כללי בטיחות לעובדי משרד ומניעת תאונות</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת בטיחות במשרד')">
-            לקבלת פרטים
-          </button>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת בטיחות במשרד')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
-
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
         <div class="front">
@@ -148,13 +164,10 @@
         <div class="back">
           <h3>לומדת בטיחות למצילים</h3>
           <p>לומדה לנוהלי עבודה ובטיחות במתחמי חוף</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת בטיחות למצילים')">
-            לקבלת פרטים
-          </button>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת בטיחות למצילים')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
-
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
         <div class="front">
@@ -163,30 +176,24 @@
         </div>
         <div class="back">
           <h3>לומדת אבטחת מידע</h3>
-          <p>הדרכה על סיכונים דיגיטליים ושמירה על מידע בארגון. כולל פרק בנושא סיכונים בשימוש בכלי בינה מלאכותית.</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת אבטחת מידע')">
-            לקבלת פרטים
-          </button>
+          <p>הדרכה על סיכוני מידע ודיגיטל, כולל פרק על AI</p>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת אבטחת מידע')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
-
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
         <div class="front">
           <div class="info-icon">i</div>
-          <img src="images/fieldworkersafety.jpg" alt="לומדת בטיחות לעובדי שטח ואבות בית">
+          <img src="images/fieldworkersafety.jpg" alt="לומדת בטיחות לעובדי שטח">
         </div>
         <div class="back">
           <h3>לומדת בטיחות לעובדי שטח ואבות בית</h3>
           <p>הדרכה לשמירה על בטיחות בעבודת שטח</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת בטיחות לעובדי שטח')">
-            לקבלת פרטים
-          </button>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת בטיחות לעובדי שטח')">בקבלת פרטים</button>
         </div>
       </div>
     </div>
-
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
         <div class="front">
@@ -196,13 +203,10 @@
         <div class="back">
           <h3>לומדת מצבי חירום</h3>
           <p>נהלים לפעולה נכונה בעת חירום במרחב הציבורי</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת מצבי חירום')">
-            לקבלת פרטים
-          </button>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת מצבי חירום')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
-
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
         <div class="front">
@@ -211,14 +215,11 @@
         </div>
         <div class="back">
           <h3>לומדת רישוי עסקים</h3>
-          <p>הסבר על תהליך הרישוי, חובות וזכויות בעלי העסקים</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת רישוי עסקים')">
-            לקבלת פרטים
-          </button>
+          <p>הסבר על תהליך הרישוי, זכויות וחובות</p>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת רישוי עסקים')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
-
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
         <div class="front">
@@ -228,13 +229,10 @@
         <div class="back">
           <h3>לומדת נגישות</h3>
           <p>היכרות עם עקרונות הנגישות במרחב העירוני</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת נגישות')">
-            לקבלת פרטים
-          </button>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת נגישות')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
-
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
         <div class="front">
@@ -243,14 +241,11 @@
         </div>
         <div class="back">
           <h3>לומדה לקליטת עובד חדש</h3>
-          <p>לומדה אינטראקטיבית להיכרות עם מערכות המחשוב, נהלים וכללי בטיחות לעובדים חדשים.</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדה לקליטת עובד חדש')">
-            לקבלת פרטים
-          </button>
+          <p>לומדה אינטראקטיבית לקליטת עובדים חדשים</p>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדה לקליטת עובד חדש')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
-
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
         <div class="front">
@@ -259,14 +254,11 @@
         </div>
         <div class="back">
           <h3>לומדה למניעת הטרדה מינית</h3>
-          <p>לומדה חווייתית לשיפור ההבנה של גבולות, אחריות אישית וזיהוי סיטואציות רגישות.</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדה למניעת הטרדה מינית')">
-            לקבלת פרטים
-          </button>
+          <p>לומדה לחינוך לגבולות ואחריות אישית</p>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדה למניעת הטרדה מינית')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
-
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
         <div class="front">
@@ -275,10 +267,8 @@
         </div>
         <div class="back">
           <h3>לומדת בטיחות לעובדי תברואה</h3>
-          <p>הדרכה מקיפה על עבודה בטוחה עם ציוד ניקיון, תנועה בסביבה עירונית והיגיינה תעסוקתית.</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת בטיחות לעובדי תברואה')">
-            לקבלת פרטים
-          </button>
+          <p>הדרכה בטיחותית לעובדי תברואה עירונית</p>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת בטיחות לעובדי תברואה')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
@@ -289,7 +279,7 @@
     <h3>יצירת קשר</h3>
     <p><strong>Improve-IT</strong></p>
     <p>טלפון: <a href="tel:0528366744">052-8366744</a></p>
-    <p>אימייל: <a href="mailto:info@improve-it.co.il">shahar.cohen@improve-it.co.il</a></p>
+    <p>אימייל: <a href="mailto:shahar.cohen@improve-it.co.il">shahar.cohen@improve-it.co.il</a></p>
     <p>אתר: <a href="https://www.improve-it.co.il" target="_blank">www.improve-it.co.il</a></p>
   </div>
 
@@ -313,51 +303,35 @@
 
   <script>
     let allOpen = false;
-
     function toggleCard(card) {
-      card.classList.toggle('flip');
+      card.classList.toggle('flip'); 
     }
-
     function toggleAll() {
       allOpen = !allOpen;
       document.querySelectorAll('.card').forEach(c => {
         if (allOpen && !c.classList.contains('flip')) c.classList.add('flip');
         if (!allOpen && c.classList.contains('flip')) c.classList.remove('flip');
       });
-      document.getElementById('toggleAllBtn').textContent = allOpen
-        ? 'הסתר מידע על כל הלומדות'
-        : 'הצג מידע על כל הלומדות';
+      document.getElementById('toggleAllBtn').textContent = allOpen ? 'הסתר מידע על כל הלומדות' : 'הצג מידע על כל הלומדות';
     }
-
     function openModal(title) {
-      document.getElementById('autoMessage').value =
-        'מעוניין/ת לקבל פרטים נוספים על הלומדה: ' + title;
+      document.getElementById('autoMessage').value = 'מעוניין/ת לקבל פרטים נוספים על הלומדה: ' + title;
       document.getElementById('contactModal').style.display = 'flex';
     }
-
     function closeModal() {
       document.getElementById('contactModal').style.display = 'none';
     }
-
-    window.onclick = e => {
-      if (e.target.id === 'contactModal') closeModal();
-    };    
-
+    window.onclick = e => { if (e.target.id === 'contactModal') closeModal(); }
     function handleFormSubmit(e) {
       const btn = e.target.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.innerHTML = 'שולח... <span class="spinner"></span>';
       return true;
     }
-
     ['name','organization','email','phone'].forEach(id => {
       const el = document.querySelector(`[name="${id}"]`);
-      if (el) {
-        el.value = localStorage.getItem(id) || '';
-        el.oninput = () => localStorage.setItem(id, el.value);
-      }
+      if (el) { el.value = localStorage.getItem(id) || ''; el.oninput = () => localStorage.setItem(id, el.value); }
     });
-
     if (new URLSearchParams(window.location.search).has('success')) {
       document.getElementById('formSuccess').style.display = 'block';
     }
