@@ -81,11 +81,20 @@
       border-radius: 50%; width: 26px; height: 26px;
       display: flex; align-items: center; justify-content: center;
       font-weight: bold; z-index: 2; cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease;
-      /* הוספה למניעת “i” שנשאר אחרי הפיכה באייפון */
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
+    
+      /* fade-out מיידי בכניסה ל־flip */
+      opacity: 1;
+      transition: opacity 0.2s ease 0.8s; /* דיליי כדי שיופיע רק אחרי האנימציה */
     }
+
+.card.flip .info-icon {
+  /* ברגע הכניסה ל־flip – ייעלם מיד */
+  opacity: 0;
+  transition: opacity 0.2s ease 0s;
+}
+
 
 .card.flip .info-icon {
   display: none;
