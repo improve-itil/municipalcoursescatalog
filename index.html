@@ -56,11 +56,16 @@
     .card.flip .inner {
       transform: rotateY(180deg);
     }
+    .front {
+      transform: rotateY(0deg);
+      z-index: 2;
+    }
     .front, .back {
       position: absolute;
       width: 100%;
       height: 100%;
       backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
       border-radius: 12px;
       overflow: hidden;
       top: 0;
@@ -76,6 +81,7 @@
       background: #1a237e;
       color: white;
       transform: rotateY(180deg);
+      z-index: 1;
       padding: 20px;
       box-sizing: border-box;
       display: flex;
@@ -109,6 +115,9 @@
       font-weight: bold;
       z-index: 2;
       cursor: pointer;
+      pointer-events: auto;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
   </style>
 </head>
@@ -162,7 +171,7 @@
       <div class="inner">
         <div class="front">
           <div class="info-icon" onclick="flipCard(this)">i</div>
-          <img src="images/fieldworkersafety.jpg" alt="בטיחות לעובדי שטח">
+          <img src="images/fieldworkersafety.jpg" alt="לומדת בטיחות לעובדי שטח">
         </div>
         <div class="back" onclick="unflipCard(this)">
           <h3>בטיחות לעובדי שטח</h3>
