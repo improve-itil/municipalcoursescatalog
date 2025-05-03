@@ -7,175 +7,127 @@
   <link rel="icon" href="images/logo-improve-it-32.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Heebo', sans-serif; background: #f9f9f9; padding: 20px; margin: 0; }
+    body { font-family: 'Heebo', sans-serif; background: #f9f9f9; margin: 0; padding: 20px; }
     .header { text-align: center; margin-bottom: 40px; }
     .header img { max-width: 180px; }
     .header h2 { font-weight: 400; font-size: 20px; margin-top: 15px; }
     .toggle-all-icon {
-      font-size: 16px; cursor: pointer; margin-top: 10px;
-      background: #1a237e; color: white; padding: 10px 14px; border-radius: 8px;
-      transition: background .2s, transform .1s; display: inline-block; user-select: none;
+      display: inline-block; user-select: none; cursor: pointer;
+      background: #1a237e; color: #fff; padding: 10px 14px; border-radius: 8px;
+      transition: background .2s, transform .1s; margin-top: 10px;
     }
     .toggle-all-icon:hover { background: #3949ab; }
     .toggle-all-icon:active { transform: scale(.95); }
+
+    /* floating buttons */
+    .contact-float, .back-to-top {
+      position: fixed; background: #1a237e; color: #fff; padding: 10px 14px;
+      border: none; border-radius: 8px; cursor: pointer; font-size: 16px;
+      z-index: 10000; transition: background .2s, transform .1s;
+    }
+    .contact-float { top: 20px; right: 20px; }
+    .back-to-top { bottom: 20px; right: 20px; display: none; }
+    .contact-float:hover, .back-to-top:hover { background: #3949ab; }
+    .contact-float:active, .back-to-top:active { transform: scale(.95); }
+    .back-to-top.show { display: block; }
 
     .catalog-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
     .card {
       width: 90vw; max-width: 300px; height: 200px; perspective: 1000px;
       opacity: 0; transform: translateY(20px); animation: fadeInUp .6s ease forwards;
-      cursor: pointer;
+      cursor: pointer; position: relative;
     }
     .inner {
-      width:100%; height:100%; position:relative;
+      width: 100%; height: 100%; position: relative;
       transform-style: preserve-3d; transition: transform .8s ease-in-out;
     }
     .card.flip .inner { transform: rotateY(180deg); }
     .front, .back {
-      position:absolute; top:0; left:0;
-      width:100%; height:100%;
-      backface-visibility:hidden; -webkit-backface-visibility:hidden;
-      border-radius:12px; overflow:hidden;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      backface-visibility: hidden; border-radius: 12px; overflow: hidden;
     }
-    .front img { width:100%; height:100%; object-fit:contain; background:#fff; }
+    .front img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
     .back {
-      background:#1a237e; color:#fff; transform:rotateY(180deg);
-      padding:20px; box-sizing:border-box;
-      display:flex; flex-direction:column;
-      justify-content:center; align-items:center; text-align:center;
+      background: #1a237e; color: #fff; transform: rotateY(180deg);
+      padding: 20px; box-sizing: border-box;
+      display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
     }
-    .back h3 { margin:0; font-size:18px; }
-    .back p { margin-top:10px; font-size:14px; }
-
+    .back h3 { margin: 0; font-size: 18px; }
+    .back p { margin-top: 10px; font-size: 14px; }
     .info-icon {
-      position:absolute; top:8px; right:8px;
-      width:26px; height:26px; border-radius:50%;
-      background:#1a237ecc; color:#fff; font-weight:bold;
-      display:flex; align-items:center; justify-content:center;
+      position: absolute; top: 8px; right: 8px; width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(26,35,126,.8); color: #fff; display: flex; align-items: center; justify-content: center;
       transition: transform .2s, background .2s, opacity .2s ease .8s;
-      backface-visibility:hidden; -webkit-backface-visibility:hidden;
-      opacity:1;
     }
-    .card.flip .info-icon {
-      opacity:0; transition: opacity .2s ease 0s;
-    }
-    .info-icon:active {
-      transform:scale(1.2); background:#3949ab;
-    }
-
+    .card.flip .info-icon { opacity: 0; }
+    .info-icon:active { transform: scale(1.2); background: #3949ab; }
     .contact-btn {
-      margin-top:10px; padding:8px 14px;
-      border-radius:8px; border:none; font-weight:bold;
-      background:#fff; color:#1a237e;
-      transition: transform .1s ease;
+      margin-top: 10px; padding: 8px 14px; background: #fff; color: #1a237e;
+      border: none; border-radius: 8px; font-weight: bold; transition: transform .1s ease;
     }
-    .contact-btn:active { transform:scale(.95); }
+    .contact-btn:active { transform: scale(.95); }
 
     .modal {
-      display:none; position:fixed; top:0; left:0;
-      width:100vw; height:100vh; background:rgba(0,0,0,.6);
-      justify-content:center; align-items:center; z-index:9999;
+      display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,.6); justify-content: center; align-items: center; z-index: 9999;
     }
     .modal-content {
-      position:relative; background:#fff; padding:20px;
-      border-radius:8px; max-width:400px; width:90%;
-      box-shadow:0 0 10px rgba(0,0,0,.3); text-align:center;
+      background: #fff; padding: 20px; border-radius: 8px; max-width: 400px; width: 90%;
+      box-shadow: 0 0 10px rgba(0,0,0,.3); text-align: center; position: relative;
     }
     .modal-close-btn {
-      position:absolute; top:10px; right:10px; background:transparent;
-      border:none; font-size:20px; cursor:pointer; line-height:1;
+      position: absolute; top: 10px; right: 10px; background: transparent; border: none;
+      font-size: 20px; cursor: pointer;
     }
     .spinner {
-      border:3px solid #f3f3f3; border-top:3px solid #1a237e;
-      border-radius:50%; width:16px; height:16px;
-      animation:spin 1s linear infinite; display:inline-block;
-      vertical-align:middle; margin-left:8px;
+      border: 3px solid #f3f3f3; border-top: 3px solid #1a237e;
+      border-radius: 50%; width: 16px; height: 16px;
+      animation: spin 1s linear infinite; display: inline-block; vertical-align: middle; margin-left: 8px;
     }
-    @keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+    @keyframes spin { to { transform: rotate(360deg); } }
     .modal-content input, .modal-content textarea {
-      width:calc(100% - 50px); margin:10px auto; padding:8px;
-      border:1px solid #ccc; border-radius:6px; font-family:inherit;
-      text-align:center; display:block;
+      width: calc(100% - 50px); margin: 10px auto; padding: 8px; border: 1px solid #ccc;
+      border-radius: 6px; font-family: inherit; text-align: center; display: block;
     }
     .modal-content button {
-      background:#1a237e; color:#fff; border:none; padding:10px 20px;
-      border-radius:6px; cursor:pointer; transition:transform .1s;
+      background: #1a237e; color: #fff; padding: 10px 20px; border: none; border-radius: 6px;
+      cursor: pointer; transition: transform .1s;
     }
-    .modal-content button:active { transform:scale(.95); }
+    .modal-content button:active { transform: scale(.95); }
 
-    /* Footer Contact Section */
     .footer-contact {
-      margin-top:40px; padding:20px;
-      background:#eceff1; border-radius:8px;
-      text-align:center; font-size:14px; color:#333;
+      margin-top: 40px; padding: 20px; background: #eceff1; border-radius: 8px; text-align: center; color: #333;
     }
-    .footer-contact h3 {
-      margin:0 0 10px; font-size:18px; color:#1a237e;
-    }
-    .footer-contact p {
-      margin:5px 0;
-    }
-    .footer-contact a {
-      color:#1a237e; text-decoration:none;
-    }
-    .footer-contact a:hover {
-      text-decoration:underline;
-    }
+    .footer-contact h3 { margin: 0 0 10px; font-size: 18px; color: #1a237e; }
+    .footer-contact p { margin: 5px 0; }
+    .footer-contact a { color: #1a237e; text-decoration: none; }
+    .footer-contact a:hover { text-decoration: underline; }
 
-    @keyframes fadeInUp {
-      to {opacity:1; transform:translateY(0);}
-    }
-    @media (max-width:480px) {
-      .modal-content { padding:15px; }
-      .modal-content input, .modal-content textarea { font-size:16px; }
-      .back h3, .back p { font-size:14px; }
-      .contact-btn { padding:10px; font-size:16px; }
+    @keyframes fadeInUp { to { opacity:1; transform: translateY(0); } }
+    @media(max-width:480px){
+      .modal-content{padding:15px}
+      .modal-content input, .modal-content textarea{font-size:16px}
+      .back h3, .back p{font-size:14px}
+      .contact-btn{padding:10px;font-size:16px}
     }
   </style>
 </head>
 <body>
+
+  <button class="contact-float" onclick="scrollToFooter()">ליצירת קשר</button>
+  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
   <div class="header">
     <a href="index.html"><img src="images/logo-improve-it.png" alt="Logo"></a>
-    <h2>הדרך היעילה, המדויקת והחסכונית להכשיר עובדים – עם לומדות דיגיטליות מותאמות לרשויות מקומיות</h2>
-    <div id="toggleAllBtn" class="toggle-all-icon" onclick="toggleAll()">
-      הצג מידע על כל הלומדות
-    </div>
+    <h2>הדרך היעילה, המדויקת והחסכונית להכשיר עובדים – עם לומדות דיגיטליות מותאמות לרשויות מוניציפליות</h2>
+    <div id="toggleAllBtn" class="toggle-all-icon" onclick="toggleAll()">הצג מידע על כל הלומדות</div>
   </div>
-  
-  <div class="catalog-container">
-    <div class="card" onclick="toggleCard(this)">
-      <div class="inner">
-        <div class="front">
-          <div class="info-icon">i</div>
-          <img src="images/harassmentpreventionroshhahayin.png" alt="לומדה למניעת הטרדה מינית">
-        </div>
-        <div class="back">
-          <h3>לומדה למניעת הטרדה מינית</h3>
-          <p>לומדה לחינוך לגבולות ואחריות אישית</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדה למניעת הטרדה מינית')">לקבלת פרטים</button>
-        </div>
-      </div>
-    </div>
 
+  <div class="catalog-container">
+    <!-- 1. לומדת בטיחות במשרד -->
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
-        <div class="front">
-          <div class="info-icon">i</div>
-          <img src="images/informationsecurityherzliya.jpg" alt="לומדת אבטחת מידע">
-        </div>
-        <div class="back">
-          <h3>לומדת אבטחת מידע</h3>
-          <p>הדרכה על סיכוני מידע ודיגיטל, כולל פרק על AI</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת אבטחת מידע')">לקבלת פרטים</button>
-        </div>
-      </div>
-    </div>
-    
-    <div class="card" onclick="toggleCard(this)">
-      <div class="inner">
-        <div class="front">
-          <div class="info-icon">i</div>
-          <img src="images/officesafetyholon.jpg" alt="לומדת בטיחות במשרד">
-        </div>
+        <div class="front"><div class="info-icon">i</div><img src="images/officesafetyholon.jpg" alt="לומדת בטיחות במשרד"></div>
         <div class="back">
           <h3>לומדת בטיחות במשרד</h3>
           <p>הסבר על כללי בטיחות לעובדי משרד ומניעת תאונות</p>
@@ -183,41 +135,10 @@
         </div>
       </div>
     </div>
-
+    <!-- 2. לומדת בטיחות למצילים -->
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
-        <div class="front">
-          <div class="info-icon">i</div>
-          <img src="images/accessibilitymodiinlit.png" alt="לומדת נגישות">
-        </div>
-        <div class="back">
-          <h3>לומדת נגישות</h3>
-          <p>היכרות עם עקרונות הנגישות במרחב העירוני</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת נגישות')">לקבלת פרטים</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" onclick="toggleCard(this)">
-      <div class="inner">
-        <div class="front">
-          <div class="info-icon">i</div>
-          <img src="images/newemployeeitraanana.jpg" alt="לומדה לקליטת עובד חדש">
-        </div>
-        <div class="back">
-          <h3>לומדה לקליטת עובד חדש</h3>
-          <p>לומדה אינטראקטיבית לקליטת עובדים חדשים</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדה לקליטת עובד חדש')">לקבלת פרטים</button>
-        </div>
-      </div>
-    </div>
-    
-    <div class="card" onclick="toggleCard(this)">
-      <div class="inner">
-        <div class="front">
-          <div class="info-icon">i</div>
-          <img src="images/lifeguardsafetytelaviv.jpg" alt="לומדת בטיחות למצילים">
-        </div>
+        <div class="front"><div class="info-icon">i</div><img src="images/lifeguardsafetytelaviv.jpg" alt="לומדת בטיחות למצילים"></div>
         <div class="back">
           <h3>לומדת בטיחות למצילים</h3>
           <p>לומדה לנוהלי עבודה ובטיחות במתחמי חוף</p>
@@ -225,27 +146,32 @@
         </div>
       </div>
     </div>
-        
+    <!-- 3. לומדת אבטחת מידע -->
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
-        <div class="front">
-          <div class="info-icon">i</div>
-          <img src="images/fieldworkersafety.jpg" alt="לומדת בטיחות לעובדי שטח">
-        </div>
+        <div class="front"><div class="info-icon">i</div><img src="images/informationsecurityherzliya.jpg" alt="לומדת אבטחת מידע"></div>
         <div class="back">
-          <h3>לומדת בטיחות לעובדי שטח ואבות בית</h3>
-          <p>הדרכה לשמירה על בטיחות בעבודת שטח</p>
-          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת בטיחות לעובדי שטח')">בקבלת פרטים</button>
+          <h3>לומדת אבטחת מידע</h3>
+          <p>הדרכה על סיכונים דיגיטליים ושמירה על מידע בארגון. כולל פרק בנושא סיכונים בשימוש בכלי בינה מלאכותית</p>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת אבטחת מידע')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
-    
+    <!-- 4. לומדת בטיחות לעובדי שטח ואבות בית -->
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
-        <div class="front">
-          <div class="info-icon">i</div>
-          <img src="images/emergencykfarsaba.jpg" alt="לומדת מצבי חירום">
+        <div class="front"><div class="info-icon">i</div><img src="images/fieldworkersafety.jpg" alt="לומדת בטיחות לעובדי שטח ואבות בית"></div>
+        <div class="back">
+          <h3>לומדת בטיחות לעובדי שטח ואבות בית</h3>
+          <p>הדרכה לשמירה על בטיחות בעבודת שטח</p>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת בטיחות לעובדי שטח ואבות בית')">לקבלת פרטים</button>
         </div>
+      </div>
+    </div>
+    <!-- 5. לומדת מצבי חירום -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="inner">
+        <div class="front"><div class="info-icon">i</div><img src="images/emergencykfarsaba.jpg" alt="לומדת מצבי חירום"></div>
         <div class="back">
           <h3>לומדת מצבי חירום</h3>
           <p>נהלים לפעולה נכונה בעת חירום במרחב הציבורי</p>
@@ -253,38 +179,64 @@
         </div>
       </div>
     </div>
-    
+    <!-- 6. לומדת רישוי עסקים -->
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
-        <div class="front">
-          <div class="info-icon">i</div>
-          <img src="images/businesslicensing.jpg" alt="לומדת רישוי עסקים">
-        </div>
+        <div class="front"><div class="info-icon">i</div><img src="images/businesslicensing.jpg" alt="לומדת רישוי עסקים"></div>
         <div class="back">
           <h3>לומדת רישוי עסקים</h3>
-          <p>הסבר על תהליך הרישוי, זכויות וחובות</p>
+          <p>הסבר על תהליך הרישוי, חובות וזכויות בעלי העסקים</p>
           <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת רישוי עסקים')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
-    
+    <!-- 7. לומדת נגישות -->
     <div class="card" onclick="toggleCard(this)">
       <div class="inner">
-        <div class="front">
-          <div class="info-icon">i</div>
-          <img src="images/sanitationsafetytelaviv.jpg" alt="לומדת בטיחות לעובדי תברואה">
+        <div class="front"><div class="info-icon">i</div><img src="images/accessibilitymodiinlit.png" alt="לומדת נגישות"></div>
+        <div class="back">
+          <h3>לומדת נגישות</h3>
+          <p>היכרות עם עקרונות הנגישות במרחב העירוני</p>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת נגישות')">לקבלת פרטים</button>
         </div>
+      </div>
+    </div>
+    <!-- 8. לומדה לקליטת עובד חדש -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="inner">
+        <div class="front"><div class="info-icon">i</div><img src="images/newemployeeitraanana.jpg" alt="לומדה לקליטת עובד חדש"></div>
+        <div class="back">
+          <h3>לומדה לקליטת עובד חדש</h3>
+          <p>לומדה אינטראקטיבית להיכרות עם מערכות המחשוב, נוהלי בטיחות ונהלים כלליים לעובדים חדשים בארגון</p>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדה לקליטת עובד חדש')">לקבלת פרטים</button>
+        </div>
+      </div>
+    </div>
+    <!-- 9. לומדה למניעת הטרדה מינית -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="inner">
+        <div class="front"><div class="info-icon">i</div><img src="images/harassmentpreventionroshhahayin.png" alt="לומדה למניעת הטרדה מינית"></div>
+        <div class="back">
+          <h3>לומדה למניעת הטרדה מינית</h3>
+          <p>לומדה חווייתית לשיפור ההבנה של גבולות, אחריות אישית וזיהוי סיטואציות רגישות</p>
+          <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדה למניעת הטרדה מינית')">לקבלת פרטים</button>
+        </div>
+      </div>
+    </div>
+    <!-- 10. לומדת בטיחות לעובדי תברואה -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="inner">
+        <div class="front"><div class="info-icon">i</div><img src="images/sanitationsafetytelaviv.jpg" alt="לומדת בטיחות לעובדי תברואה"></div>
         <div class="back">
           <h3>לומדת בטיחות לעובדי תברואה</h3>
-          <p>הדרכה בטיחותית לעובדי תברואה עירונית</p>
+          <p>הדרכה מקיפה על עבודה בטוחה עם ציוד ניקיון, תנועה בסביבה עירונית והיגיינה תעסוקתית</p>
           <button class="contact-btn" onclick="event.stopPropagation(); openModal('לומדת בטיחות לעובדי תברואה')">לקבלת פרטים</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Contact Footer -->
-  <div class="footer-contact">
+  <div class="footer-contact" id="footerContact">
     <h3>יצירת קשר</h3>
     <p>טלפון: <a href="tel:0528366744">052-8366744</a></p>
     <p>אימייל: <a href="mailto:shahar.cohen@improve-it.co.il">shahar.cohen@improve-it.co.il</a></p>
@@ -310,37 +262,54 @@
   </div>
 
   <script>
-    let allOpen = false;
-    function toggleCard(card) {
-      card.classList.toggle('flip'); 
+    // scroll to footer
+    function scrollToFooter() {
+      document.getElementById('footerContact').scrollIntoView({ behavior:'smooth' });
     }
-    function toggleAll() {
+    // back to top
+    const backBtn = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      backBtn.classList.toggle('show', window.scrollY > 300);
+    });
+    function scrollToTop(){ window.scrollTo({ top:0, behavior:'smooth' }); }
+
+    // hide/show contact-float on scroll direction
+    let lastY = window.scrollY;
+    const contactBtn = document.querySelector('.contact-float');
+    window.addEventListener('scroll', () => {
+      const currentY = window.scrollY;
+      contactBtn.style.display = currentY > lastY ? 'none' : 'block';
+      lastY = currentY;
+    });
+
+    // flip cards & toggle all
+    let allOpen = false;
+    function toggleCard(card){ card.classList.toggle('flip'); }
+    function toggleAll(){
       allOpen = !allOpen;
-      document.querySelectorAll('.card').forEach(c => {
-        if (allOpen && !c.classList.contains('flip')) c.classList.add('flip');
-        if (!allOpen && c.classList.contains('flip')) c.classList.remove('flip');
-      });
+      document.querySelectorAll('.card').forEach(c => c.classList.toggle('flip', allOpen));
       document.getElementById('toggleAllBtn').textContent = allOpen ? 'הסתר מידע על כל הלומדות' : 'הצג מידע על כל הלומדות';
     }
-    function openModal(title) {
-      document.getElementById('autoMessage').value = 'מעוניין/ת לקבל פרטים נוספים על הלומדה: ' + title;
+
+    // modal logic
+    function openModal(title){
+      document.getElementById('autoMessage').value = 'מעוניין/ת פרטים נוספים על הלומדה: ' + title;
       document.getElementById('contactModal').style.display = 'flex';
     }
-    function closeModal() {
-      document.getElementById('contactModal').style.display = 'none';
-    }
-    window.onclick = e => { if (e.target.id === 'contactModal') closeModal(); }
-    function handleFormSubmit(e) {
+    function closeModal(){ document.getElementById('contactModal').style.display = 'none'; }
+    window.onclick = e => { if(e.target.id==='contactModal') closeModal(); };
+    function handleFormSubmit(e){
       const btn = e.target.querySelector('button[type="submit"]');
-      btn.disabled = true;
-      btn.innerHTML = 'שולח... <span class="spinner"></span>';
+      btn.disabled = true; btn.innerHTML = 'שולח... <span class="spinner"></span>';
       return true;
     }
-    ['name','organization','email','phone'].forEach(id => {
+
+    // persist form fields
+    ['name','organization','email','phone'].forEach(id=>{
       const el = document.querySelector(`[name="${id}"]`);
-      if (el) { el.value = localStorage.getItem(id) || ''; el.oninput = () => localStorage.setItem(id, el.value); }
+      if(el){ el.value = localStorage.getItem(id)||''; el.oninput = ()=>localStorage.setItem(id, el.value); }
     });
-    if (new URLSearchParams(window.location.search).has('success')) {
+    if(new URLSearchParams(window.location.search).has('success')){
       document.getElementById('formSuccess').style.display = 'block';
     }
   </script>
